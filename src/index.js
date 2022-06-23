@@ -40,18 +40,19 @@ document.addEventListener("DOMContentLoaded",() => {
         
         fetch ('https://arbeitnow-free-job-board.p.rapidapi.com/api/job-board-api', reqOptions)
         .then((response) => response.json())
+        .then(results => results.data.forEach(item => displayJobs(item)))
             // console.log(response)
-        .then(results =>{
-            for(const jobbs in results){
-                displayJobs(jobbs)
-                console.log(jobbs)
-            }
+        // .then(results =>{
+        //     for(const jobbs in results){
+        //         displayJobs(jobbs)
+        //         console.log(jobbs)
+        //     }
             // results.forEach(jobItem => {
             //     displayJobs(jobItem)
             //     // console.log(response[0])
             // })
             
-        }) .catch(err => console.error(err));
+        .catch(err => console.error(err));
       
     }
     getJobs()
