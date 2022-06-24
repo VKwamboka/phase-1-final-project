@@ -328,24 +328,6 @@ hr{
     max-width: 220px;
     width: 100%;
 }
-.contactinfo  {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 24px;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.4);
-    margin-bottom: 16px;
-}
-.phonemail {
-    font-size: 18px;
-    line-height: 30px;
-    color: rgba(255, 255, 255, 0.75);
-    margin-bottom: 16px;
-    transition: all 0.3s ease 0s;
-    position: relative;
-    left: 0px;
-}
 .footerend {
     max-width: 1040px;
     display: flex;
@@ -378,26 +360,6 @@ hr{
     position: absolute;
     top : 0px;
     right : 0px;
-}
-
-.bottom-img {
-    height: 50%;
-}
-.bottomup {
-    position: fixed;
-    bottom: 4rem;
-    right: 4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 5.5rem;
-    width: 5.5rem;
-    border-radius: 50%;
-    z-index: 10;
-    visibility: visible;
-    opacity: 1;
-    transform: scale(1);
-    transition: all .4s;
 }
 
 .testimonial {
@@ -966,6 +928,6 @@ ul.footer-bottom-social {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-#jobs{
+/* #jobs{
     text-align: center;
-}
+} */
