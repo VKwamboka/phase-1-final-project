@@ -1,32 +1,76 @@
 document.addEventListener("DOMContentLoaded",() => {
-    // const jobsUrl = "http://localhost:3000/data"
 
     //job containers
     let jobContainer = document.getElementById("jobs")
-    let searchBar = document.getElementById("searchBar")
+
+    // define form
+    let form = document.getElementById("searchForm")
+
+    // search value input
+    let searchInput = document.getElementById("searchBar")
+
+    // search location input
+    let searchLocationInput = document.getElementById("searchLocation")
+
+
+    // event listener when form is submitted
+    form.addEventListener("submit", function(event) {
+
+        event.preventDefault()
+        console.log(searchInput.value)
+        console.log()
+
+        // contains request method and authorization headers
+        const options = {
+            method: 'GET',
+            headers: {Authorization: 'Token 46c9519a669fd6735fc7a3ac47ed8b16aa69b4e3'}
+          };
+          
+        // create url searchparams based on input  
+        const searchparams = new URLSearchParams({
+            search : searchInput.value,
+            sort_by : 'relevance',
+            location : searchLocationInput.value,
+        })
+
+        fetch(`https://cors.eu.org/https://findwork.dev/api/jobs/?${searchparams}`, options)
+        .then(response => response.json())
+        .then(response => {
+            console.log(response.results)
+            displayJobs(response.results)
+        })
+        
+        .catch(err => console.error(err));
+
+    })
+
+
 
     // displaying jobs card
-    function displayJobs(itemJobObj){  
-        console.log(itemJobObj)
+    function displayJobs(itemJobs){  
+        console.log(itemJobs)
         const ul = document.createElement('ul')
-        itemJobObj.forEach(itemJob=>{
-            const jobCard = `
-            <div class="container">
-             <div id="jobs">
-                    <p id="slug">${itemJob.slug}</p>
-                    <p id="company_name">Company: ${itemJob.company_name}</p>
-                    <h4 id="title">${itemJob.title}</h4>
-                    <p id="description">${itemJob.description}</p>
-                    <p id="remote">${itemJob.remote}</p>
-                    <p id="url">${itemJob.url}</p>
-                    <p id="tags">${itemJob.tags}</p>
-                    <p id="job_types">${itemJob.job_types}</p>
-                    <p id="location">${itemJob.location}</p>
-                    <p id="created_at">${itemJob.created_at}</p>
-                </div>
+        itemJobs.forEach(itemJob=>{
+        const jobCard = `
+        <br>
+        <div class="container" id="jobconts"> 
+            <div id="jobs">
+                <p>ID: ${itemJob.id}</p>
+                <h3 id="role">${itemJob.role}</h3>
+                <br>
+                <h4>${itemJob.company_name}</h4>
+                <p>${itemJob.employment_type}</p>
+                <p><h4>Posted on</h4>${itemJob.date_posted}</p>
+                <img src= ${itemJob.logo} alt="logo">
+                <p>${itemJob.text}</p>        
+               <a href=${itemJob.url}>Visit our site</a>
+                <hr>
+                <br>
             </div>
-            `
-            const li = document.createElement('li')
+        </div>
+        `
+        
+        const li = document.createElement('li')
             li.innerHTML = jobCard
             console.log(li)
             ul.appendChild(li)
@@ -34,97 +78,57 @@ document.addEventListener("DOMContentLoaded",() => {
 
         })
         jobContainer.appendChild(ul)
-
-        
-       
-        //console.log(jobCard)
-        
     }
 
-    // get jobs
-    function getJobs(){
-        let reqOptions = {
-            method : "GET",
-            headers: {
-                'Content-Type': 'application/json',
-                'X-RapidAPI-Key': 'f47f2d948amshf7e417382eb17b4p1b1341jsn86b1bb9c9915',
-                'X-RapidAPI-Host': 'arbeitnow-free-job-board.p.rapidapi.com'
-            }
-        };
-        
-        fetch ('https://arbeitnow-free-job-board.p.rapidapi.com/api/job-board-api', reqOptions)
-        .then((response) => response.json())
-            // console.log(response)
-        .then(results => displayJobs(results.data))
-            //{
-            // for(const jobbs in results){
-            //     displayJobs(jobbs)
-            //     console.log(jobbs)
-            // }
-            // Array.from(results).forEach(jobItem => {
-            //     displayJobs(jobItem)
-                // console.log(response[0])
-           // })
-            
-        //}) 
-        .catch(err => console.error(err));
-      
-    }
-    getJobs()
-    //displayJobs()
+    //mouseover event to change color
+    let bar1 = document.getElementById('home')
+    bar1.addEventListener('mouseover', function handleMouseOver() {
+        bar1.style.color = 'green';
+      });
 
-    //search event listener
-    const options = {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-RapidAPI-Key': 'f47f2d948amshf7e417382eb17b4p1b1341jsn86b1bb9c9915',
-            'X-RapidAPI-Host': 'arbeitnow-free-job-board.p.rapidapi.com'
-        }
-    };
+      bar1.addEventListener('mouseout', function handleMouseOut() {
+        bar1.style.color = 'black';
+      });
 
-    fetch('https://arbeitnow-free-job-board.p.rapidapi.com/api/job-board-api', options)
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
-
-
-        let bonclick =document.getElementById('id01')
-        function loginf(){
-            let formcard =`
-            <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-            <div id="id01" class="modal">
+      let bar2 = document.getElementById('abo')
+      bar2.addEventListener('mouseover', function handleMouseOver() {
+          bar2.style.color = 'green';
+        });
   
-            <form class="modal-content animate" action="/action_page.php" method="post">
-            <div class="imgcontainer">
-                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <img src="img_avatar2.png" alt="Avatar" class="avatar">
-            </div>
+        bar2.addEventListener('mouseout', function handleMouseOut() {
+          bar2.style.color = 'black';
+        });
 
-            <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
-
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
-                
-                <button type="submit">Login</button>
-                <label>
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-                </label>
-            </div>
-
-            <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                <span class="psw">Forgot <a href="#">password?</a></span>
-            </div>
-            </form>
-            </div>
-
+        let bar3 = document.getElementById('job')
+        bar3.addEventListener('mouseover', function handleMouseOver() {
+            bar3.style.color = 'green';
+          });
     
-            `
+          bar3.addEventListener('mouseout', function handleMouseOut() {
+            bar3.style.color = 'black';
+          });
+      
+    //mouseover event to display content
+    function navBar(evt, content) {
+        // Declare all variables
+        let i, tabcontent, tablinks;
+      
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.querySelector("navbarcontainer");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
         }
-
-
-
+      
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("navlist");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+      
+        // Show the current tab, and add an "active" class to the link that opened the tab
+        document.getElementById(content).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+    //   navBar()
+    
 })
