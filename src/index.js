@@ -130,5 +130,20 @@ document.addEventListener("DOMContentLoaded",() => {
         evt.currentTarget.className += " active";
       }
     //   navBar()
+
+    const btnform = document.getElementById('btnform');
+
+    btnform.addEventListener('click', () => {
+    const form = document.getElementById('id01');
+
+    if (form.style.display === 'none') {
+        // 👇️ this SHOWS the form
+        form.style.display = 'block';
+    } else {
+        // 👇️ this HIDES the form
+        form.style.display = 'none';
+    }
+});
+
     
 })
