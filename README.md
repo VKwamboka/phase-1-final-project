@@ -1,7 +1,7 @@
 # KuzaApp 
  
 ## About KuzaApp 
-A job portal website.
+A job portal website where one can search and apply for jobs.
 
 
 ## Technologies used
