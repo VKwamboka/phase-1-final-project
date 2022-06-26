@@ -94,7 +94,7 @@ p {
     opacity: 1;
 }
 
-.evTffm {
+.btnform {
     border: none;
     border-radius: 50px;
     color: rgb(255, 255, 255);
@@ -323,32 +323,19 @@ hr{
     position: relative;
     left: 0px;
 }
-/* .footerend {
+.footerend {
     max-width: 1040px;
     display: flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
 }
-.slogan {
-    display: flex;
-    -webkit-box-align: baseline;
-    align-items: baseline;
-    flex-wrap: wrap;
-    margin-right: auto;
-}
-.slog  {
-    color: rgba(255, 255, 255, 0.5);
-    min-width: 280px;
-    letter-spacing: 0.02em;
-    font-size: 18px;
-    line-height: 30px;
-    padding: 1rem;
-}
+
 .footermedia {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
-} */
+    float:right;
+}
 
 .star {
     opacity: 0.2;
