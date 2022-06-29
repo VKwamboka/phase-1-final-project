@@ -129,21 +129,24 @@ document.addEventListener("DOMContentLoaded",() => {
         document.getElementById(content).style.display = "block";
         evt.currentTarget.className += " active";
       }
-    //   navBar()
+    //   navBar()xp
 
     const btnform = document.getElementById('btnform');
-
+    // console.log(btnform)
+    const form2 = document.getElementById('id01');
+    form2.style.display = 'none '
+    // console.log(form2)
     btnform.addEventListener('click', () => {
-    const form = document.getElementById('id01');
-
-    if (form.style.display === 'none') {
-        // 👇️ this SHOWS the form
-        form.style.display = 'block';
+      
+    if (form2.style.display === 'none') {
+       
+        form2.style.display = 'block';
     } else {
-        // 👇️ this HIDES the form
-        form.style.display = 'none';
+        
+        form2.style.display = 'none';
     }
 });
+
 
     
 })
