@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded",() => {
         event.preventDefault()
         console.log(searchInput.value)
         console.log()
-
+        
         // contains request method and authorization headers
         const options = {
             method: 'GET',
@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded",() => {
         })
         
         .catch(err => console.error(err));
+        form.reset()
 
     })
 
@@ -147,6 +148,8 @@ document.addEventListener("DOMContentLoaded",() => {
     }
 });
 
-
+$(document).ready(function(){
+  $(".owl-carousel").owlCarousel();
+});
     
 })
