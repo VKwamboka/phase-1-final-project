@@ -73,6 +73,10 @@ document.addEventListener("DOMContentLoaded",() => {
                   <ul>
                     <li class="like">Like! <span class="like-glyph">&#x2661;</span></li>
                   </ul>
+                  <div id="modal" class="hidden">
+                  <h2>Error!</h2>
+                  <p id="modal-message"></p>
+                </div>
                 </footer>
                 <br>
             </div>
@@ -160,4 +164,46 @@ $(document).ready(function(){
   $(".owl-carousel").owlCarousel();
 });
     
+let likes = document.querySelector('.like-glyph')
+// console.log(likes)
+  likes.addEventListener('click', (event) => {
+    event.preventDefault()
+    if(likes.textContent === EMPTY_HEART ){
+      mimicServerCall()
+      // .then(response => response.json())
+      .then( () =>{
+        likes.textContent = FULL_HEART
+        likes.className = 'activated-heart'
+      })
+      .catch((error)=>{
+        const modal = document.getElementById('modal')
+        modal.className = " "
+        modal.innerText = error
+        setTimeout(()=>{
+          modal.className = "hidden",3000
+        })
+      })
+
+    }
+    else{
+      likes.textContent = EMPTY_HEART
+      likes.classList.remove('activated-heart')
+    }
+  })
 })
+//------------------------------------------------------------------------------
+// Don't change the code below: this function mocks the server response
+//------------------------------------------------------------------------------
+
+function mimicServerCall(url="http://mimicServer.example.com", config={}) {
+  return new Promise(function(resolve, reject) {
+    setTimeout(function() {
+      let isRandomFailure = Math.random() < .2
+      if (isRandomFailure) {
+        reject("Random server error. Try again.");
+      } else {
+        resolve("Pretend remote server notified of action!");
+      }
+    }, 300);
+  });
+}
