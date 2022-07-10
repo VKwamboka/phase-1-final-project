@@ -1,3 +1,6 @@
+const EMPTY_HEART = '♡'
+const FULL_HEART = '♥'
+
 document.addEventListener("DOMContentLoaded",() => {
 
     //job containers
@@ -45,7 +48,7 @@ document.addEventListener("DOMContentLoaded",() => {
 
     })
 
-
+    
 
     // displaying jobs card
     function displayJobs(itemJobs){  
@@ -66,6 +69,11 @@ document.addEventListener("DOMContentLoaded",() => {
                 <p>${itemJob.text}</p>        
                <a href=${itemJob.url}>Visit our site</a>
                 <hr>
+                <footer>
+                  <ul>
+                    <li class="like">Like! <span class="like-glyph">&#x2661;</span></li>
+                  </ul>
+                </footer>
                 <br>
             </div>
         </div>
