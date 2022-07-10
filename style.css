@@ -1009,3 +1009,6 @@ h3#role{
     background: #fff;
     border-style: ridge;
 }
+.like-glyph {
+    cursor: pointer;
+  }
